@@ -3,15 +3,27 @@ const { v4: uuid } = require("uuid");
 const Workout = require("../database/Workout");
 
 const getAllWorkouts = () => {
-    const allWorkouts = Workout.getAllWorkouts();
+    try {
+        const allWorkouts = Workout.getAllWorkouts();
 
-    return allWorkouts;
+        return allWorkouts;
+    } catch (error) {
+        console.log(`A exception occurred ${error}`);
+
+        throw error;
+    }
 };
 
 const getOneWorkout = (workoutId) => {
-    const workout = Workout.getOneWorkout(workoutId);
+    try {
+        const workout = Workout.getOneWorkout(workoutId);
 
-    return workout;
+        return workout;
+    } catch (error) {
+        console.log(`A exception occurred ${error}`);
+
+        throw error;
+    }
 };
 
 const createNewWorkout = (newWorkout) => {
@@ -22,19 +34,37 @@ const createNewWorkout = (newWorkout) => {
         updatedAt: new Date().toLocaleDateString("pt-BR", { timeZone: "UTC" })
     };
 
-    const createdWorkout = Workout.createNewWorkout(workoutToInsert);
+    try {
+        const createdWorkout = Workout.createNewWorkout(workoutToInsert);
 
-    return createdWorkout;
+        return createdWorkout;
+    } catch (error) {
+        console.log(`A exception occurred ${error}`);
+
+        throw error;
+    }
 };
 
 const updateOneWorkout = (workoutId, changes) => {
-    const updatedWorkout = Workout.updateOneWorkout(workoutId, changes);
+    try {
+        const updatedWorkout = Workout.updateOneWorkout(workoutId, changes);
 
-    return updatedWorkout;
+        return updatedWorkout;
+    } catch (error) {
+        console.log(`A exception occurred ${error}`);
+
+        throw error;
+    }
 };
 
 const deleteOneWorkout = (workoutId) => {
-    Workout.deleteOneWorkout(workoutId);
+    try {
+        Workout.deleteOneWorkout(workoutId);
+    } catch (error) {
+        console.log(`A exception occurred ${error}`);
+
+        throw error;
+    }
 };
 
 module.exports = {
